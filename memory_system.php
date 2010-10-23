@@ -14,131 +14,124 @@
 <p id="data">
 <?php
 
-$first_letters = array(
-	0  => (array ( phones  => array('S','Z'), decimal => 0, binary => 0, cards => array (suit1 => 's', suit2 => 's') )),
-	1  => (array ( phones  => array('T'), decimal => 1, binary => 1, cards => array (suit1 => 'c', suit2 => 'd') )),
-	2  => (array ( phones  => array('n'), decimal => 2, binary => 2, cards => array (suit1 => 'c', suit2 => 'h') )),
-	3  => (array ( phones  => array('m'), decimal => 3, binary => 3, cards => array (suit1 => 'c', suit2 => 's') )),
-	4  => (array ( phones  => array('r'), decimal => 4, binary => 4, cards => array (suit1 => 'd', suit2 => 'c') )),
-	5  => (array ( phones  => array('L'), decimal => 5, binary => 5, cards => array (suit1 => 'd', suit2 => 'h') )),
-	6  => (array ( phones  => array('b'), decimal => 6, binary => 6, cards => array (suit1 => 'd', suit2 => 's') )),
-	7  => (array ( phones  => array('k'), decimal => 7, binary => 7, cards => array (suit1 => 'c', suit2 => 'c') )),
-	8  => (array ( phones  => array('f','v'), decimal => 8, binary => 8, cards => array (suit1 => 'h', suit2 => 'c') )),
-	9  => (array ( phones  => array('p'), decimal => 9, binary => 9, cards => array (suit1 => 'h', suit2 => 'd') )),
-	10 => (array ( phones  => array('g','y'), decimal => NULL, binary => 10, cards => array (suit1 => 'h', suit2 => 's') )),
-	11 => (array ( phones  => array('h'), decimal => NULL, binary => 11, cards => array (suit1 => 'h', suit2 => 'h') )),
-	12 => (array ( phones  => array('sk','sn','sm'), decimal => NULL, binary => 12, suit => array (suit1 => 's', suit2 => 'c') )),
-	13 => (array ( phones  => array('st','sp'), decimal => NULL, binary => 13, cards => array (suit1 => 's', suit2 => 'd') )),
-	14 => (array ( phones  => array('sh','sl','sw','j','ch'), decimal => NULL, binary => 14, suit => array (suit1 => 's', suit2 => 'h') )),
-	15 => (array ( phones  => array('d'), decimal => NULL, binary => 15, cards => array (suit1 => 'd', suit2 => 'd') )),
-	16 => (array ( phones  => NULL, decimal => NULL, binary => NULL, cards => NULL )),
-	17 => (array ( phones  => NULL, decimal => NULL, binary => NULL, cards => NULL )),
-	18 => (array ( phones  => NULL, decimal => NULL, binary => NULL, cards => NULL ))
-);
-//echo "Letters: $first_letters[0][phones][0], $first_letters[0][phones][1] | $first_letters[1]"; // S
+$first_letters = array('s/z','t','n','m','r','L','b','k','f/v','p','g/y','h','sk/sn/sm','st/sp','sh/sl/sw/j/ch','d',NULL,NULL,NULL);
+$middle_letters = array('o','i','u','aa','a','ai','ih','e','ei','uh',NULL,NULL,NULL,NULL,NULL,NULL,'ow','or','ar');
+$final_letters = array('S/Z','T','n','m','r/th','L','b','k','f/v','p',NULL,NULL,NULL,NULL,NULL,NULL,'j/sh/ch','g','d');
+$decimals = array(0,1,2,3,4,5,6,7,8,9,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+$binaries = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,NULL,NULL,NULL);
+$suits = array('ss','cd','ch','cs','dc','dh','ds','cc','hc','hd','hs','hh','sc','sd','sh','dd',NULL,NULL,NULL);
+$cards = array("A","2","3","4","5","6","7","8","9","10",NULL,NULL,NULL,NULL,NULL,NULL,"J","Q","K");
+$pairs = array();
 
-$middle_letters = array(
-	0  => 'o',
-	1  => 'i',
-	2  => 'u',
-	3  => 'aa',
-	4  => 'a',
-	5  => 'ai',
-	6  => 'ih',
-	7  => 'e',
-	8  => 'ei',
-	9  => 'uh',
-	10 => '',
-	11 => '',
-	12 => '',
-	13 => '',
-	14 => '',
-	15 => '',
-	16 => 'ow',
-	17 => 'or',
-	18 => 'ar'
-);
-$final_letters = array(
-	0  => 'S/Z',
-	1  => 'T',
-	2  => 'n',
-	3  => 'm',
-	4  => 'r/th',
-	5  => 'L',
-	6  => 'b',
-	7  => 'k',
-	8  => 'f/v',
-	9  => 'p',
-	10 => '',
-	11 => '',
-	12 => '',
-	13 => '',
-	14 => '',
-	15 => '',
-	16 => 'j/sh/ch',
-	17 => 'g',
-	18 => 'd'
-);
+$full_set = array($first_letters,$middle_letters,$final_letters,$decimals,$binaries,$suits,$cards);
 
-$full_set = array(first => $first_letters, middle => $middle_letters, last => $final_letters);
-?>
-<pre>
+//echo count($first_letters) . count ($middle_letters) .count($final_letters) . count($decimals).count($suits).count($pairs);
+echo '<h2>Extract</h2>';
 
-<?php
+//echo '<div style="background-color:#eee;"><pre>';
+//print_r($full_set);
+//echo '</pre></div>';
 
-echo '<hr /><h2>Extract</h2>';
-$cycles = count($first_letters);
+echo '<div style="background-color:yellow;"><pre>';
 
-//echo $first_letters[0][phones][0] .'<p></p>'; // $first_letters[0][phones][1]; //| $first_letters[1];
-for ( $row = 0; $row < $cycles; $row++ ) {
-    while ( list( $key, $value ) = each( $first_letters[ $row ] ) ) {
-        if(is_array($value)) {
-            foreach ($value as $fdsa) {
-                echo "|$fdsa";
-            }
-        }  else {
-            echo "|$value";
+for ($row1 = 0; $row1 < 19; $row1++) {
+
+    //echo "$row1-->";
+
+    for ($row2 = 0; $row2 < 19; $row2++) {
+        for ($row3 = 0; $row3 < 19; $row3++) {
+            echo "$row1-->$row2-->$row3 ::: $first_letters[$row1], $middle_letters[$row2], $final_letters[$row3] :::<br>";
         }
     }
- echo '|<br />';
+
+
+//foreach ($full_set as $full) {
+//    foreach ($full as $key => $value) {
+//        echo "$key ---> $value<br />";
+//    }
+
+
+
+//    if (is_array($full)) {
+//        foreach ($full as $key => $value) {
+//            echo "$key ---> $value<br />";
+//        }
+//    }
 }
+echo '</pre></div>';
 
-
-//print_r($first_letters);
-//print_r($middle_letters);
-//print_r($final_letters);
-
-echo '<h2>$full_set</h2>';
-print_r($full_set);
-
-echo '<hr /><h2>Cycles</h2>';
-$cycles = count($first_letters);
-echo "<p>Number: $cycles</p>";
-echo "<ol>";
-for ($row = 0; $row < $cycles; $row++)
-{
-    echo "<li><b>The row number $row</b>";
-    echo "<ul>";
-
-    for ($col = 0; $col < 3; $col++)
-    {
-    	//$first_letters[0][phones][0], $first_letters[0][phones][1] | $first_letters[1]
-        echo "<li>".$first_letters[$row][phones][$col]."</li>";
+// works:
+echo '<pre>';
+foreach ($first_letters as $key_first => $value_first) {
+    echo "$key_first => $value_first<br />";
+    foreach ($middle_letters as $key_middle => $value_middle) {
+        echo "\t$key_middle => $value_middle<br />";
+            foreach ($final_letters as $key_final => $value_final) {
+                echo "\t\t$key_final => $value_final<br />";
+            }
     }
-
-    echo "</ul>";
-    echo "</li>";
 }
-echo "</ol>";
 
+echo '</pre>';
+/*
+foreach ($old_suits as $old_suit1) {
+	foreach ($cards as $card1) {
+		foreach ($old_suits as $old_suit2) {
+			foreach ($cards as $card2) {
 
-foreach ($first_letters as $first_letter) {
-	//echo $first_letter[1];
+				// set color of first card
+				if ($suit1 == '&spades;' || $suit1 == '&clubs;') {
+					$color = 'black';
+				} else {
+					$color = 'red';
+				}
+
+				// assemble the first card
+				$set1 = '<span class="' . $color . '">' . $card1 . $suit1 . '</span>';
+
+				// set color of second card
+				if ($suit2 == '&spades;' || $suit2 == '&clubs;') {
+					$color = 'black';
+				} else {
+					$color = 'red';
+				}
+
+				// assemble the second card
+				$set2 = '<span style="color:' . $color . ';">' . $card2 . $suit2 . '</span>';
+
+				// removing 52 duplicates, insert the assembled pairs into the array
+				// e.g., there aren't two Ace of Spades in one deck
+				if ($set1 != $set2) {
+					// fill the array with pairs
+					$pairs[] = "$set1 $set2";
+				}
+			}
+		}
+	}
 }
+
+// randomize
+//shuffle($pairs);
+
+// print the output
+
+foreach ($pairs as $pair) {
+	echo $pair . "<br />\n";
+}
+
+echo '<pre>';
+foreach ($pairs as $key => $value) {
+    echo $key . '=>' . $value . '<br />';
+}
+
+echo '</pre>';
+*/
+
+
 ?>
-</pre>
 
 <h2>OUTPUT</h2>
+
 
 <table>
 <tr>
@@ -203,7 +196,7 @@ foreach ($pairs as $pair) {
 */
 
 ?>
-</p>
+
 
 </body>
 </html>
@@ -228,4 +221,6 @@ for ( $row = 0; $row < $cycles; $row++ ) {
  echo '|<br />';
 }
  */
- *?>
+
+
+ ?>
