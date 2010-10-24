@@ -16,17 +16,17 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<h1>Memory System</h1>
+<h1>Memory System Worksheet</h1>
 
 <p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). After generating the webpage, copy it into a word processor to edit and print it.</p>
 <table>
 <thead>
 <tr>
-<td class="a">#</td>
+<!-- counter column: <td class="a">#</td> -->
 <td class="b">Decimal</td>
 <td class="c">Binary</td>
 <td class="d">Cards</td>
-<td class="e">Image</td>
+<td class="e">Images</td>
 </tr>
 </thead>
 <?php
@@ -115,8 +115,14 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                     $suit_code2 = '<span style="color:black">&clubs;</span>';
                 break;
             }
-            //assemble pairs
-            $car = "$cards[$row2]$suit_code1 $cards[$row3]$suit_code2";
+            //assemble pairs, removing duplicates
+            $card1 = $cards[$row2].$suit_code1;
+            $card2 = $cards[$row3].$suit_code2;
+            if ($card1 != $card2) {
+                $car = "$card1 $card2";
+            } else {
+                $car = NULL;
+            }
 
             //check if anything should be removed
             if (strlen($dec) == 3) {
@@ -143,7 +149,8 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 
                 echo "<tr>";
 
-                echo "<td style=\"color:#eee;\" class=\"a\">$counter</td>";
+                //add a counter column if you want
+                //echo "<td style=\"color:#eee;\" class=\"a\">$counter</td>";
 
                 echo "<td class=\"b\">";
                 if ($dec_check == 1) {
@@ -173,6 +180,6 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 
 ?>
 </table>
-
+<p>Printed <?php echo $counter; ?> rows.</p>
 </body>
 </html>
