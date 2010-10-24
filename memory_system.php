@@ -20,7 +20,7 @@ $final_letters = array('S/Z','T','n','m','r/th','L','b','k','f/v','p',NULL,NULL,
 $decimals = array(0,1,2,3,4,5,6,7,8,9,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 $binaries = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,NULL,NULL,NULL);
 $suits = array('ss','cd','ch','cs','dc','dh','ds','cc','hc','hd','hs','hh','sc','sd','sh','dd',NULL,NULL,NULL);
-$cards = array("A","2","3","4","5","6","7","8","9","10",NULL,NULL,NULL,NULL,NULL,NULL,"J","Q","K");
+$cards = array("10","A","2","3","4","5","6","7","8","9",NULL,NULL,NULL,NULL,NULL,NULL,"J","Q","K");
 $pairs = array();
 
 $full_set = array($first_letters,$middle_letters,$final_letters,$decimals,$binaries,$suits,$cards);
@@ -32,7 +32,7 @@ echo '<h2>Extract</h2>';
 //print_r($full_set);
 //echo '</pre></div>';
 
-echo '<div style="background-color:yellow;"><pre>';
+echo '<div style="background-color:#FFFFA0;"><pre>';
 
 for ($row1 = 0; $row1 < 19; $row1++) {
 
@@ -40,7 +40,60 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 
     for ($row2 = 0; $row2 < 19; $row2++) {
         for ($row3 = 0; $row3 < 19; $row3++) {
-            echo "$row1-->$row2-->$row3 ::: $first_letters[$row1], $middle_letters[$row2], $final_letters[$row3] :::<br>";
+
+            //construct the binary number as $bin
+            if($row3 < 8) {
+                $bin1 = decbin($binaries[$row1]);
+                $bin1 = str_pad($bin1,4,"0",STR_PAD_LEFT);
+                $bin2 = decbin($binaries[$row2]);
+                $bin2 = str_pad($bin2,3,"0",STR_PAD_LEFT);
+                $bin3 = decbin($binaries[$row3]);
+                $bin3 = str_pad($bin3,3,"0",STR_PAD_LEFT);
+                $bins = "$bin1 $bin2 $bin3";
+            } else {
+                $bins = NULL;
+            }
+
+            //construct the decimals as $dec
+            if($row3 < 10) {
+                $dec = $decimals[$row1] . $decimals[$row2] . $decimals[$row3];
+            } else {
+                $dec = NULL;
+            }
+
+            //construct letters as $let
+            if($row3 < 16) {
+                $let = "$first_letters[$row1], $middle_letters[$row2], $final_letters[$row3]";
+            } else {
+                $let = "null";
+            }
+
+            //construct cards as $car
+            //str_split($str);
+            $card_suits = $suits[$row1];
+            $card_suit = str_split($card_suits);
+            //print_r($card_suit);
+            $car = "$cards[$row2]$card_suit[0] $cards[$row3]$card_suit[1]";
+
+            // Provides: You should eat pizza, beer, and ice cream every day
+//$phrase  = "You should eat fruits, vegetables, and fiber every day.";
+//$healthy = array("fruits", "vegetables", "fiber");
+//$yummy   = array("pizza", "beer", "ice cream");
+
+//$newphrase = str_replace($healthy, $yummy, $phrase);
+//$string = 'The quick brown fox jumped over the lazy dog.';
+//$patterns = array();
+//$patterns[0] = '/quick/';
+//$patterns[1] = '/brown/';
+//$patterns[2] = '/fox/';
+//$replacements = array();
+//$replacements[2] = 'bear';
+//$replacements[1] = 'black';
+//$replacements[0] = 'slow';
+//echo preg_replace($patterns, $replacements, $string);
+
+
+            echo "$row1-->$row2-->$row3 | $let | $dec | $bins | $car ($suits[$row1])<br>";
         }
     }
 
@@ -61,18 +114,18 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 echo '</pre></div>';
 
 // works:
-echo '<pre>';
-foreach ($first_letters as $key_first => $value_first) {
-    echo "$key_first => $value_first<br />";
-    foreach ($middle_letters as $key_middle => $value_middle) {
-        echo "\t$key_middle => $value_middle<br />";
-            foreach ($final_letters as $key_final => $value_final) {
-                echo "\t\t$key_final => $value_final<br />";
-            }
-    }
-}
-
-echo '</pre>';
+//echo '<pre>';
+//foreach ($first_letters as $key_first => $value_first) {
+//    echo "$key_first => $value_first<br />";
+//    foreach ($middle_letters as $key_middle => $value_middle) {
+//        echo "\t$key_middle => $value_middle<br />";
+//            foreach ($final_letters as $key_final => $value_final) {
+//                echo "\t\t$key_final => $value_final<br />";
+//            }
+//    }
+//}
+//
+//echo '</pre>';
 /*
 foreach ($old_suits as $old_suit1) {
 	foreach ($cards as $card1) {
