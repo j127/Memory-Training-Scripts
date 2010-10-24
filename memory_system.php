@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>Memory System Generator</title>
+  <title>Memory System Generator &amp; Worksheet</title>
   <style type="text/css">
   body {width: 90%;font-size:1.3em; padding: 0 20px;}
   table { width:100%;margin:0;padding:0;border: 1px solid #ccc; font-family:Courier New,monospace;border-collapse:collapse;}
@@ -18,7 +18,7 @@
 <body>
 <h1>Memory System</h1>
 
-<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). After genering webpage, copy it into a word processor to edit and print it.</p>
+<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). After generating the webpage, copy it into a word processor to edit and print it.</p>
 <table>
 <thead>
 <tr>
