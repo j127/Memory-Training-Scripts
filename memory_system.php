@@ -1,18 +1,37 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>Memory System</title>
+  <title>Memory System Generator</title>
   <style type="text/css">
   body {width: 90%;font-size:1.3em; padding: 0 20px;}
   table { width:100%;margin:0;padding:0;border: 1px solid #ccc; font-family:Courier New,monospace;border-collapse:collapse;}
   table td { padding: 5px 10px; border:1px solid #666;}
+  thead tr { background-color: #eee; }
+  table td.a { width: 85px; color: #ccc; }
+  table td.b { width: 125px; }
+  table td.c { width: 190px; }
+  table td.d { width: 120px; }
+  table td.e { width: ; }
   </style>
 </head>
 <body>
 <h1>Memory System</h1>
 
+<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3).</p>
+<table>
+<thead>
+<tr>
+<td class="a">#</td>
+<td class="b">Decimal</td>
+<td class="c">Binary</td>
+<td class="d">Cards</td>
+<td class="e">Image</td>
+</tr>
+</thead>
 <?php
 
+// PLACE YOUR SYSTEM INTO THESE ARRAYS AND THE SCRIPT DOES THE REST
+// YOU'LL PROBABLY JUST NEED TO MODIFY THE LETTERS AND THE ORDER OF SUITS
 $first_letters = array('s/z','t','n','m','r','L','b','k','f/v','p','g/y','h','sk/sn/sm','st/sp','sh/sl/sw/j/ch','d',NULL,NULL,NULL);
 $middle_letters = array('o','i','u','aa','a','ai','ih','e','ei','uh',NULL,NULL,NULL,NULL,NULL,NULL,'ow','or','ar');
 $final_letters = array('S/Z','T','n','m','r/th','L','b','k','f/v','p',NULL,NULL,NULL,NULL,NULL,NULL,'j/sh/ch','g','d');
@@ -25,13 +44,6 @@ $pairs = array();
 $full_set = array($first_letters,$middle_letters,$final_letters,$decimals,$binaries,$suits,$cards);
 
 //echo count($first_letters) . count ($middle_letters) .count($final_letters) . count($decimals).count($suits).count($pairs);
-echo '<h2>Extract</h2>';
-
-//echo '<div style="background-color:#eee;"><pre>';
-//print_r($full_set);
-//echo '</pre></div>';
-
-echo '<table>';
 
 //counter
 $counter = 0;
@@ -62,7 +74,7 @@ for ($row1 = 0; $row1 < 19; $row1++) {
             }
 
             //construct letters as $let
-            if($row3 < 16) {
+            if($row3 < 19) { // this probably isn't needed, but was left over from before and I don't want to break anything
                 $let = "$first_letters[$row1], $middle_letters[$row2], $final_letters[$row3]";
             } else {
                 $let = NULL;
@@ -135,27 +147,27 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 
                 echo "<tr>";
 
-                echo "<td>$counter</td>";
+                echo "<td style=\"color:#eee;\" class=\"a\">$counter</td>";
 
-                echo "<td>";
+                echo "<td class=\"b\">";
                 if ($dec_check == 1) {
                     echo $dec;
                 }
                 echo "</td>";
 
-                echo "<td>";
+                echo "<td class=\"c\">";
                 if ($bin_check == 1) {
                     echo $bins;
                 }
                 echo "</td>";
 
-                echo "<td>";
+                echo "<td class=\"d\">";
                 if ($card_check == 1) {
-                    echo "$car <span style='color:#eee;'>($suits[$row1])</span>";
+                    echo "$car"; // read the suit pair with $suits[$row1]
                 }
                 echo "</td>";
 
-                echo "<td>$let</td>";
+                echo "<td style=\"text-align:right;class=\"e\">$let</td>";
 
                 echo "</tr>";
 
