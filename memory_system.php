@@ -18,7 +18,7 @@
 <body>
 <h1>Memory System Worksheet</h1>
 
-<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). After generating the webpage, copy it into a word processor to edit and print it.</p>
+<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a>. After generating the webpage, copy it into a word processor to edit and print it.</p>
 <table>
 <thead>
 <tr>
