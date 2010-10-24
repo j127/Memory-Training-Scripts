@@ -16,9 +16,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<h1>Memory System Generator</h1>
+<h1>Memory System</h1>
 
-<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). You can then copy the generated webpage into a word processor.</p>
+<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). After genering webpage, copy it into a word processor to edit and print it.</p>
 <table>
 <thead>
 <tr>
