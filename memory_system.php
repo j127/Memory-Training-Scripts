@@ -35,7 +35,7 @@
 // YOU'LL PROBABLY JUST NEED TO MODIFY THE LETTERS AND THE ORDER OF SUITS
 $first_letters = array('s/z','t','n','m','r','L','b','k','f/v','p','g/y','h','sk/sn/sm','st/sp','sh/sl/sw/j/ch','d',NULL,NULL,NULL);
 $middle_letters = array('o','i','u','aa','a','ai','ih','e','ei','uh',NULL,NULL,NULL,NULL,NULL,NULL,'ow','or','ar');
-$final_letters = array('S/Z','T','n','m','r/th','L','b','k','f/v','p',NULL,NULL,NULL,NULL,NULL,NULL,'j/sh/ch','g','d');
+$final_letters = array('s/z','t','n','m','r/th','L','b','k','f/v','p',NULL,NULL,NULL,NULL,NULL,NULL,'j/sh/ch','g','d');
 $decimals = array(0,1,2,3,4,5,6,7,8,9,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 $binaries = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,NULL,NULL,NULL);
 $suits = array('ss','cd','ch','cs','dc','dh','ds','cc','hc','hd','hs','hh','sc','sd','sh','dd',NULL,NULL,NULL);
