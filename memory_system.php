@@ -13,11 +13,12 @@
   table td.d { width: 120px; }
   table td.e { width: ; }
   </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
-<h1>Memory System</h1>
+<h1>Memory System Generator</h1>
 
-<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3).</p>
+<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a> (GPL3). You can then copy the generated webpage into a word processor.</p>
 <table>
 <thead>
 <tr>
@@ -39,11 +40,6 @@ $decimals = array(0,1,2,3,4,5,6,7,8,9,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NU
 $binaries = array(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,NULL,NULL,NULL);
 $suits = array('ss','cd','ch','cs','dc','dh','ds','cc','hc','hd','hs','hh','sc','sd','sh','dd',NULL,NULL,NULL);
 $cards = array("10","A","2","3","4","5","6","7","8","9",NULL,NULL,NULL,NULL,NULL,NULL,"J","Q","K");
-$pairs = array();
-
-$full_set = array($first_letters,$middle_letters,$final_letters,$decimals,$binaries,$suits,$cards);
-
-//echo count($first_letters) . count ($middle_letters) .count($final_letters) . count($decimals).count($suits).count($pairs);
 
 //counter
 $counter = 0;
@@ -167,39 +163,16 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                 }
                 echo "</td>";
 
-                echo "<td style=\"text-align:right;class=\"e\">$let</td>";
+                echo "<td style=\"text-align:right;\" class=\"e\">$let</td>";
 
                 echo "</tr>";
-
-//                echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span>";
-//
-//                if ($dec_check == 1) {
-//                    echo $dec;
-//                }
-//                echo " | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
             }
         }
     }
 }
-echo '</table>';
-
-// works:
-//echo '<pre>';
-//foreach ($first_letters as $key_first => $value_first) {
-//    echo "$key_first => $value_first<br />";
-//    foreach ($middle_letters as $key_middle => $value_middle) {
-//        echo "\t$key_middle => $value_middle<br />";
-//            foreach ($final_letters as $key_final => $value_final) {
-//                echo "\t\t$key_final => $value_final<br />";
-//            }
-//    }
-//}
-//
-//echo '</pre>';
-
 
 ?>
-
+</table>
 
 </body>
 </html>
