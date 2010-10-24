@@ -43,6 +43,9 @@ $cards = array("10","A","2","3","4","5","6","7","8","9",NULL,NULL,NULL,NULL,NULL
 
 //counter
 $counter = 0;
+$decimal_counter = 0;
+$binary_counter = 0;
+$card_counter = 0;
 
 for ($row1 = 0; $row1 < 19; $row1++) {
 
@@ -115,9 +118,11 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                     $suit_code2 = '<span style="color:black">&clubs;</span>';
                 break;
             }
-            //assemble pairs, removing duplicates
+            //assemble pairs
             $card1 = $cards[$row2].$suit_code1;
             $card2 = $cards[$row3].$suit_code2;
+
+            //Remove duplicates. If you want images for duplicate cards, get rid of this conditional statement.
             if ($card1 != $card2) {
                 $car = "$card1 $card2";
             } else {
@@ -136,8 +141,8 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                 $bin_check = 0;
             }
 
-            //card check
-            if(($cards[$row2] != "") && ($cards[$row3] != "") && ($suits[$row1] != "")) {
+            //card check to make sure there is something worth printing
+            if(($cards[$row2] != "") && ($cards[$row3] != "") && ($suits[$row1] != "") && ($car != NULL)) {
                 $card_check = 1;
             } else {
                 $card_check = 0;
@@ -155,18 +160,21 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                 echo "<td class=\"b\">";
                 if ($dec_check == 1) {
                     echo $dec;
+                    $decimal_counter++;
                 }
                 echo "</td>";
 
                 echo "<td class=\"c\">";
                 if ($bin_check == 1) {
                     echo $bins;
+                    $binary_counter++;
                 }
                 echo "</td>";
 
                 echo "<td class=\"d\">";
                 if ($card_check == 1) {
                     echo "$car"; // read the suit pair with $suits[$row1]
+                    $card_counter++;
                 }
                 echo "</td>";
 
@@ -180,6 +188,13 @@ for ($row1 = 0; $row1 < 19; $row1++) {
 
 ?>
 </table>
-<p>Printed <?php echo $counter; ?> rows.</p>
+<div style="font-family:Courier New,monospace">
+<pre>Printed:
+<?php echo "\t$counter"; ?> rows
+<?php echo "\t$decimal_counter"; ?> decimal numbers
+<?php echo "\t$binary_counter"; ?> binary numbers
+<?php echo "\t$card_counter"; ?> card pairs
+</pre>
+</div>
 </body>
 </html>
