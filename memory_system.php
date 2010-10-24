@@ -4,13 +4,13 @@
   <title>Memory System</title>
   <style type="text/css">
   body {width: 90%;font-size:1.3em; padding: 0 20px;}
-  table td { border: 1px solid #ccc; }
+  table { width:100%;margin:0;padding:0;border: 1px solid #ccc; font-family:Courier New,monospace;border-collapse:collapse;}
+  table td { padding: 5px 10px; border:1px solid #666;}
   </style>
 </head>
 <body>
 <h1>Memory System</h1>
 
-<p id="data">
 <?php
 
 $first_letters = array('s/z','t','n','m','r','L','b','k','f/v','p','g/y','h','sk/sn/sm','st/sp','sh/sl/sw/j/ch','d',NULL,NULL,NULL);
@@ -31,7 +31,7 @@ echo '<h2>Extract</h2>';
 //print_r($full_set);
 //echo '</pre></div>';
 
-echo '<div style="font-family:Courier New,monospace"><pre>';
+echo '<table>';
 
 //counter
 $counter = 0;
@@ -42,7 +42,7 @@ for ($row1 = 0; $row1 < 19; $row1++) {
         for ($row3 = 0; $row3 < 19; $row3++) {
 
             //construct the binary number as $bin
-            if($row3 < 8) {
+            if(($row3 < 8) && ($row1 < 16) && ($row2 < 8)) {
                 $bin1 = decbin($binaries[$row1]);
                 $bin1 = str_pad($bin1,4,"0",STR_PAD_LEFT);
                 $bin2 = decbin($binaries[$row2]);
@@ -122,20 +122,54 @@ for ($row1 = 0; $row1 < 19; $row1++) {
                 $bin_check = 0;
             }
 
-            // print to browser
-            if(($dec_check == 1) || ($bin_check == 1)) {
-                $counter ++;
-                echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span>";
+            //card check
+            if(($cards[$row2] != "") && ($cards[$row3] != "") && ($suits[$row1] != "")) {
+                $card_check = 1;
+            } else {
+                $card_check = 0;
+            }
 
+            // if there is something there, print to browser
+            if(($dec_check == 1) || ($bin_check == 1) || ($card_check == 1)) {
+                $counter ++;
+
+                echo "<tr>";
+
+                echo "<td>$counter</td>";
+
+                echo "<td>";
                 if ($dec_check == 1) {
                     echo $dec;
                 }
-                echo " | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
+                echo "</td>";
+
+                echo "<td>";
+                if ($bin_check == 1) {
+                    echo $bins;
+                }
+                echo "</td>";
+
+                echo "<td>";
+                if ($card_check == 1) {
+                    echo "$car <span style='color:#eee;'>($suits[$row1])</span>";
+                }
+                echo "</td>";
+
+                echo "<td>$let</td>";
+
+                echo "</tr>";
+
+//                echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span>";
+//
+//                if ($dec_check == 1) {
+//                    echo $dec;
+//                }
+//                echo " | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
             }
         }
     }
 }
-echo '</pre></div>';
+echo '</table>';
 
 // works:
 //echo '<pre>';
