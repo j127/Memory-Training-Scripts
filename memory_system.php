@@ -4,7 +4,6 @@
   <title>Memory System</title>
   <style type="text/css">
   body {width: 90%;font-size:1.3em; padding: 0 20px;}
-  #data {font-family:Courier New, monospace;}
   table td { border: 1px solid #ccc; }
   </style>
 </head>
@@ -32,11 +31,12 @@ echo '<h2>Extract</h2>';
 //print_r($full_set);
 //echo '</pre></div>';
 
-echo '<div style="background-color:#FFFFA0;"><pre>';
+echo '<div style="font-family:Courier New,monospace"><pre>';
+
+//counter
+$counter = 0;
 
 for ($row1 = 0; $row1 < 19; $row1++) {
-
-    //echo "$row1-->";
 
     for ($row2 = 0; $row2 < 19; $row2++) {
         for ($row3 = 0; $row3 < 19; $row3++) {
@@ -65,51 +65,57 @@ for ($row1 = 0; $row1 < 19; $row1++) {
             if($row3 < 16) {
                 $let = "$first_letters[$row1], $middle_letters[$row2], $final_letters[$row3]";
             } else {
-                $let = "null";
+                $let = NULL;
             }
 
             //construct cards as $car
-            //str_split($str);
+            //get the correct suit pair
             $card_suits = $suits[$row1];
+            //split suit pair in half
             $card_suit = str_split($card_suits);
-            //print_r($card_suit);
-            $car = "$cards[$row2]$card_suit[0] $cards[$row3]$card_suit[1]";
 
-            // Provides: You should eat pizza, beer, and ice cream every day
-//$phrase  = "You should eat fruits, vegetables, and fiber every day.";
-//$healthy = array("fruits", "vegetables", "fiber");
-//$yummy   = array("pizza", "beer", "ice cream");
+            //put each suit in a string
+            $card_suit1 = $card_suit[0];
+            $card_suit2 = $card_suit[1];
 
-//$newphrase = str_replace($healthy, $yummy, $phrase);
-//$string = 'The quick brown fox jumped over the lazy dog.';
-//$patterns = array();
-//$patterns[0] = '/quick/';
-//$patterns[1] = '/brown/';
-//$patterns[2] = '/fox/';
-//$replacements = array();
-//$replacements[2] = 'bear';
-//$replacements[1] = 'black';
-//$replacements[0] = 'slow';
-//echo preg_replace($patterns, $replacements, $string);
+            //turn suit codes into colored suit symbols
+            switch ($card_suit1) {
+                case 's':
+                    $suit_code1 = '<span style="color:black">&spades;</span>';
+                break;
+                case 'h':
+                    $suit_code1 = '<span style="color:red">&hearts;</span>';
+                break;
+                case 'd':
+                    $suit_code1 = '<span style="color:red">&diams;</span>';
+                break;
+                case 'c':
+                    $suit_code1 = '<span style="color:black">&clubs;</span>';
+                break;
+            }
+            switch ($card_suit2) {
+                case 's':
+                    $suit_code2 = '<span style="color:black">&spades;</span>';
+                break;
+                case 'h':
+                    $suit_code2 = '<span style="color:red">&hearts;</span>';
+                break;
+                case 'd':
+                    $suit_code2 = '<span style="color:red">&diams;</span>';
+                break;
+                case 'c':
+                    $suit_code2 = '<span style="color:black">&clubs;</span>';
+                break;
+            }
+            //assemble pairs
+            $car = "$cards[$row2]$suit_code1 $cards[$row3]$suit_code2";
 
 
-            echo "$row1-->$row2-->$row3 | $let | $dec | $bins | $car ($suits[$row1])<br>";
+            // print to browser
+            $counter ++;
+            echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span> $dec | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
         }
     }
-
-
-//foreach ($full_set as $full) {
-//    foreach ($full as $key => $value) {
-//        echo "$key ---> $value<br />";
-//    }
-
-
-
-//    if (is_array($full)) {
-//        foreach ($full as $key => $value) {
-//            echo "$key ---> $value<br />";
-//        }
-//    }
 }
 echo '</pre></div>';
 
@@ -126,154 +132,10 @@ echo '</pre></div>';
 //}
 //
 //echo '</pre>';
-/*
-foreach ($old_suits as $old_suit1) {
-	foreach ($cards as $card1) {
-		foreach ($old_suits as $old_suit2) {
-			foreach ($cards as $card2) {
 
-				// set color of first card
-				if ($suit1 == '&spades;' || $suit1 == '&clubs;') {
-					$color = 'black';
-				} else {
-					$color = 'red';
-				}
-
-				// assemble the first card
-				$set1 = '<span class="' . $color . '">' . $card1 . $suit1 . '</span>';
-
-				// set color of second card
-				if ($suit2 == '&spades;' || $suit2 == '&clubs;') {
-					$color = 'black';
-				} else {
-					$color = 'red';
-				}
-
-				// assemble the second card
-				$set2 = '<span style="color:' . $color . ';">' . $card2 . $suit2 . '</span>';
-
-				// removing 52 duplicates, insert the assembled pairs into the array
-				// e.g., there aren't two Ace of Spades in one deck
-				if ($set1 != $set2) {
-					// fill the array with pairs
-					$pairs[] = "$set1 $set2";
-				}
-			}
-		}
-	}
-}
-
-// randomize
-//shuffle($pairs);
-
-// print the output
-
-foreach ($pairs as $pair) {
-	echo $pair . "<br />\n";
-}
-
-echo '<pre>';
-foreach ($pairs as $key => $value) {
-    echo $key . '=>' . $value . '<br />';
-}
-
-echo '</pre>';
-*/
-
-
-?>
-
-<h2>OUTPUT</h2>
-
-
-<table>
-<tr>
-<th>#</th>
-<th>Decimal</th>
-<th>Binary</th>
-<th>Cards</th>
-<th>Image</th>
-</tr>
-
-
-</table>
-<?php
-/*
-$suits = array("&spades;","&hearts;","&diams;","&clubs;");
-$cards = array("A","2","3","4","5","6","7","8","9","10","J","Q","K");
-$pairs = array();
-
-foreach ($suits as $suit1) {
-	foreach ($cards as $card1) {
-		foreach ($suits as $suit2) {
-			foreach ($cards as $card2) {
-
-				// set color of first card
-				if ($suit1 == '&spades;' || $suit1 == '&clubs;') {
-					$color = 'black';
-				} else {
-					$color = 'red';
-				}
-
-				// assemble the first card
-				$set1 = '<span class="' . $color . '">' . $card1 . $suit1 . '</span>';
-
-				// set color of second card
-				if ($suit2 == '&spades;' || $suit2 == '&clubs;') {
-					$color = 'black';
-				} else {
-					$color = 'red';
-				}
-
-				// assemble the second card
-				$set2 = '<span class="' . $color . '">' . $card2 . $suit2 . '</span>';
-
-				// removing 52 duplicates, insert the assembled pairs into the array
-				// e.g., there aren't two Ace of Spades in one deck
-				if ($set1 != $set2) {
-					// fill the array with pairs
-					$pairs[] = "$set1 $set2";
-				}
-			}
-		}
-	}
-}
-
-// randomize
-shuffle($pairs);
-
-// print the output
-foreach ($pairs as $pair) {
-	echo $pair . "<br />\n";
-}
-*/
 
 ?>
 
 
 </body>
 </html>
-<?php
-/*
- * this works
-
-echo '<hr /><h2>Extract</h2>';
-$cycles = count($first_letters);
-
-//echo $first_letters[0][phones][0] .'<p></p>'; // $first_letters[0][phones][1]; //| $first_letters[1];
-for ( $row = 0; $row < $cycles; $row++ ) {
-    while ( list( $key, $value ) = each( $first_letters[ $row ] ) ) {
-        if(is_array($value)) {
-            foreach ($value as $fdsa) {
-                echo "|$fdsa";
-            }
-        }  else {
-            echo "|$value";
-        }
-    }
- echo '|<br />';
-}
- */
-
-
- ?>
