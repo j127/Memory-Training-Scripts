@@ -110,10 +110,28 @@ for ($row1 = 0; $row1 < 19; $row1++) {
             //assemble pairs
             $car = "$cards[$row2]$suit_code1 $cards[$row3]$suit_code2";
 
+            //check if anything should be removed
+            if (strlen($dec) == 3) {
+                $dec_check = 1;
+            } else {
+                $dec_check = 0;
+            }
+            if (strlen($bins) == 12) {
+                $bin_check = 1;
+            } else {
+                $bin_check = 0;
+            }
 
             // print to browser
-            $counter ++;
-            echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span> $dec | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
+            if(($dec_check == 1) || ($bin_check == 1)) {
+                $counter ++;
+                echo "$counter: <span style='color:#eee;'>$row1-->$row2-->$row3 |</span>";
+
+                if ($dec_check == 1) {
+                    echo $dec;
+                }
+                echo " | $bins | $car <span style='color:#eee;'>($suits[$row1])</span> | $let <br>";
+            }
         }
     }
 }
