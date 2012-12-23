@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Memory System Generator &amp; Worksheet</title>
   <style type="text/css">
@@ -13,12 +13,12 @@
   table td.d { width: 120px; }
   table td.e { width: ; }
   </style>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="utf-8">
 </head>
 <body>
 <h1>Memory System Worksheet</h1>
 
-<p>Get the PHP script <a href="http://github.com/Hostels/Memory-Training-Scripts">here</a>. After generating the webpage, copy it into a word processor to edit and print it.</p>
+<p>Get the PHP script <a href="http://github.com/j127/Memory-Training-Scripts">here</a>. After generating the webpage, copy it into a word processor to edit and print it. Visit <a href="http://mnemotechnics.org/">Mnemotechnics.org</a> to learn more about memory techniques.</p>
 <table>
 <thead>
 <tr>

@@ -1,10 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Random Binaries</title>
   <style type="text/css">
   body {width: 90%;font-size:1.3em; padding: 0 20px;}
   </style>
+  <meta charset="utf-8">
 </head>
 <body>
 <h1>Random Binary Number Generator</h1>

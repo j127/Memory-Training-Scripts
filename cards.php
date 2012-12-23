@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <title>Random Cards for Memory Training</title>
   <style type="text/css">
@@ -8,6 +8,7 @@
   .red {color: red;}
   .black {color: #000;}
   </style>
+  <meta charset="utf-8">
 </head>
 <body>
 <h1>Random Card Pairs Generator</h1>
