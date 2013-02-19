@@ -5,3 +5,5 @@ http://mnemotechnics.org/training
 
 For questions about the scripts or memory training, ask in the forum:
 http://mnemotechnics.org/
+
+This project is archived. An improved version will go live on the site soon. -- February 2013
